@@ -22,7 +22,7 @@ const Misa = connection_1.default.define('Misa', {
     codtipomisa: {
         type: sequelize_1.DataTypes.INTEGER
     },
-    intencio: {
+    intencion: {
         type: sequelize_1.DataTypes.STRING
     },
     valor: {

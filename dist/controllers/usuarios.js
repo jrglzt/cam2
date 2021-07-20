@@ -14,10 +14,15 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getUsuario = void 0;
+const express_validator_1 = require("express-validator");
 const generar_jwt_1 = __importDefault(require("../helpers/generar-jwt"));
 const usuario_1 = __importDefault(require("../models/usuario"));
 //Traer usuario para validar 
 const getUsuario = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const errors = express_validator_1.validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(400).json(errors);
+    }
     //const {user} = req.params;
     //const {cla} = req.params;
     const { user, cla } = req.body;
@@ -28,7 +33,7 @@ const getUsuario = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
         } });
     if (!usuario) {
         return res.status(404).json({
-            msg: 'Usuario o clave incorrectas'
+            error: 'Usuario o clave incorrectas'
         });
     }
     else {

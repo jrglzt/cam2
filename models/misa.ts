@@ -18,7 +18,7 @@ const Misa = db.define('Misa', {
      codtipomisa: {
         type: DataTypes.INTEGER 
      },
-     intencio: {
+     intencion: {
         type: DataTypes.STRING 
      },
      valor: {
